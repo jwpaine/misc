@@ -1,0 +1,9 @@
+
+About: A basic sieve of eratosthenes implementation. 
+
+Compiling: gcc prime.c
+
+Running: The prime that you want is specified as a command line argument.
+         ex:  ./a.out 100
+         will return the 100th prime
+
