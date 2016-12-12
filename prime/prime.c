@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	ints = realloc(ints, (M + 2)*sizeof(int));
 	ints[0] = 2;
 	/* while our primeCount is less than the specified prime we desire */
-	while(primeCount < atoi(argv[1])) {
+	while(primeCount < atoi(argv[1]) - 1 ) {
 		/* get next prime */
 		/* we use an OR statement here so that we can drop into the while loop when i = 0 and realloc our array */
 		while(ints[i] == 0 || i == M) {
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 		i++;
 	}
 
-	printf("%dth Prime: %d\n", atoi(argv[1]), ints[i-2]);
+	printf("%dth Prime: %d\n", atoi(argv[1]), ints[i-1]);
 
 	return 0;
 }
