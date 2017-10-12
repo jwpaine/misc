@@ -68,7 +68,7 @@ function ticketInfo(id, callback) {
 function getNew(queue, cb) {
 
 	request.get({
-		url : REST + "search/ticket?query=(Status='open' OR Status='new') AND (Queue='UM - Campus Services') AND Owner='Nobody'&orderby=+Created&format=l&fields=Subject,Status,Created",
+		url : REST + "search/ticket?query=(Status='open' OR Status='new') AND (Queue='" + queue + "') AND Owner='Nobody'&orderby=+Created&format=l&fields=Subject,Status,Created",
 		jar: cookieJar
 	}, function (error, response, body) {
 			
@@ -95,9 +95,6 @@ function createTicket(queue, email, subject, text, callback) {
             'Text': text,
             'Queue': queue
             */
-
-
-		
   			
 	}
 	request.post({
@@ -113,7 +110,6 @@ function createTicket(queue, email, subject, text, callback) {
 
 }
 
-
 prompt.start();
 prompt.get(['username', 'password'], function (err, result) {
 
@@ -124,7 +120,11 @@ prompt.get(['username', 'password'], function (err, result) {
 		return;
 	}
 
-	console.log("Successful login");
+		console.log("Successful login");
+
+		getNew("UM - Campus Services", function(cb){
+			console.log(cb);
+		});
 	
 	});
   });
